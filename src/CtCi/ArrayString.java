@@ -192,7 +192,7 @@ public class ArrayString {
 	public static void spiralMatrix() {
 		int[][] mat = new int[][] {{1,1,1}, {0,0,0}, {1,1,1}};
 		
-		List<Integer> res = new LinkedList<>();
+		List<Integer> res = new LinkedList<>( );
 		int top=0, bottom=mat.length-1;
 		int left=0, right=mat[0].length-1;
 		
