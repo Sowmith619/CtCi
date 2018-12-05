@@ -20,8 +20,8 @@ public class LinkedList {
 		temp.next.next.next.next = new ListNode(20);
 		return temp;
 	}
-	public static void displayList(ListNode temp) {
-		System.out.print("ListNode ->  ");
+	public static void displayList(ListNode temp, String name) {
+		System.out.print(name+" : list ->  ");
 		while(temp!=null) {
 			System.out.print(temp.val+"-");
 			temp=temp.next;
@@ -32,11 +32,14 @@ public class LinkedList {
 	public static void main(String[] args) {
 		//init the list
 		ListNode root = init();
-		displayList(root);
+		displayList(root,"init()");
 		ListNode tempRoot = root;
 
 		deleteDup(root);
-		displayList(root);
+		displayList(root,"With Set");
+		root = init();
+		deleteDup(root);
+		displayList(root, "without buffer");
 	}
 	//remove duplicate from a listNode
 	public static void deleteDup(ListNode root) {
@@ -53,7 +56,20 @@ public class LinkedList {
 			root=root.next;
 		}
 	}
-
+	public static void deleteDup2(ListNode root) {
+		ListNode curr = root;
+		while(curr!=null) {
+			ListNode runner = curr;
+			while(runner.next != null) {
+				if(runner.next.val == curr.val) {
+					runner.next = runner.next.next;
+				}else {
+					runner = runner.next;
+				}
+			}
+			curr = curr.next;
+		}
+	}
 	
 	
 	
