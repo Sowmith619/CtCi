@@ -1,6 +1,7 @@
 package CtCi;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class ArrayString {
 		rotateMatrix();
 		spiralMatrix();
 		zeroMatrix();
+		groupAnagrams();
 	}
 	//[1.1]Check isUnique: time O(n); space O(1) as the loop will not iterate over more than 128 character
 	public static void isUnique() {
@@ -247,5 +249,22 @@ public class ArrayString {
 		}
 		System.out.println("ZeroMatrix");
 		displayMatrix(mat);
+	}
+	
+	//Group Anagrams
+	public static void groupAnagrams() {
+		String[] str = {"abc", "cba", "aba", "aab", "cba"};
+		HashMap<String, List<String>> map = new HashMap<>();
+		for(String s: str) {
+			char[] ch = s.toCharArray();
+			Arrays.sort(ch);
+			String key = String.valueOf(ch);
+			if(!map.containsKey(key)) {
+				map.put(key, new LinkedList<>());
+			}
+			map.get(key).add(s);
+		}
+		System.out.println("Group Anagram = "+ map.values());
+		System.out.println("map -> "+map); 
 	}
 }
