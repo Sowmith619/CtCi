@@ -18,6 +18,8 @@ public class LinkedList {
 		temp.next.next = new ListNode(15);
 		temp.next.next.next = new ListNode(15);
 		temp.next.next.next.next = new ListNode(20);
+		temp.next.next.next.next.next = new ListNode(25);
+		temp.next.next.next.next.next.next = new ListNode(30);
 		return temp;
 	}
 	public static void displayList(ListNode temp, String name) {
@@ -36,29 +38,32 @@ public class LinkedList {
 		ListNode tempRoot = root;
 
 		deleteDup(root);
-		displayList(root,"With Set");
+		displayList(root,"With HashSet");
+		
 		root = init();
 		deleteDup(root);
 		displayList(root, "without buffer");
+		
+		root = init();
+		nthToLast(root);
 	}
 	//remove duplicate from a listNode
 	public static void deleteDup(ListNode root) {
 		HashSet<Integer> set = new HashSet<>();
-		ListNode previous = new ListNode(0);
-		previous.next = root;
+		ListNode prev = new ListNode(0);
 		while(root!=null) {
 			if(set.contains(root.val)) {
-				previous.next=root.next;
+				prev.next = root.next;
 			}else {
 				set.add(root.val);
-				previous = root;
+				prev = root;
 			}
 			root=root.next;
 		}
 	}
 	public static void deleteDup2(ListNode root) {
 		ListNode curr = root;
-		while(curr!=null) {
+		while(curr != null) {
 			ListNode runner = curr;
 			while(runner.next != null) {
 				if(runner.next.val == curr.val) {
@@ -71,6 +76,21 @@ public class LinkedList {
 		}
 	}
 	
-	
+	public static void nthToLast(ListNode root) {
+		int k=3;
+		ListNode slow=root, fast=root;
+		for(int i=0;i<k;i++) {
+			if(fast==null) {
+				System.out.println("Out of Bound");
+				return;
+			}
+			fast=fast.next;
+		}
+		while(fast!=null) {
+			fast=fast.next;
+			slow=slow.next;
+		}
+		System.out.println("Mid = "+slow.val);
+	}
 	
 }
