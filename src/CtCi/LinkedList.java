@@ -51,14 +51,14 @@ public class LinkedList {
 	public static void deleteDup(ListNode root) {
 		HashSet<Integer> set = new HashSet<>();
 		ListNode prev = new ListNode(0);
-		while(root!=null) {
+		while(root != null) {
 			if(set.contains(root.val)) {
 				prev.next = root.next;
 			}else {
 				set.add(root.val);
 				prev = root;
 			}
-			root=root.next;
+			root = root.next;
 		}
 	}
 	public static void deleteDup2(ListNode root) {
