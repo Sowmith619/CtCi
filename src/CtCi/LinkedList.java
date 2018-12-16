@@ -16,7 +16,7 @@ public class LinkedList {
 		ListNode temp = new ListNode(5);
 		temp.next = new ListNode(10);
 		temp.next.next = new ListNode(15);
-		temp.next.next.next = new ListNode(15);
+		temp.next.next.next = new ListNode(10);
 		temp.next.next.next.next = new ListNode(20);
 		temp.next.next.next.next.next = new ListNode(25);
 		temp.next.next.next.next.next.next = new ListNode(30);
@@ -46,6 +46,9 @@ public class LinkedList {
 		
 		root = init();
 		nthToLast(root);
+		
+		root = init();
+		orderList(root);
 	}
 	//remove duplicate from a listNode
 	public static void deleteDup(ListNode root) {
@@ -91,6 +94,27 @@ public class LinkedList {
 			slow=slow.next;
 		}
 		System.out.println("Mid = "+slow.val);
+	}
+	public static void orderList(ListNode head) {
+		int x = 15;
+		ListNode dummySmall = new ListNode(0);
+		ListNode dummyLarge = new ListNode(0);
+		ListNode small = dummySmall;
+		ListNode large = dummyLarge;
+		while(head!=null) {
+			if(head.val<x) {
+				small.next = head;
+				small = head;
+			}else {
+				large.next = head;
+				large = head;
+			}
+			head = head.next;
+		}
+		small.next = dummyLarge.next;
+		large.next = null;
+		displayList(dummySmall.next,"Rearranged List");
+
 	}
 	
 }
