@@ -1,6 +1,7 @@
 package CtCi;
 
 import java.util.HashSet;
+import java.util.Stack;
 
 class ListNode{
 	int val;
@@ -49,6 +50,7 @@ public class LinkedList {
 		
 		root = init();
 		orderList(root);
+		sumList();
 	}
 	//remove duplicate from a listNode
 	public static void deleteDup(ListNode root) {
@@ -115,6 +117,59 @@ public class LinkedList {
 		large.next = null;
 		displayList(dummySmall.next,"Rearranged List");
 
+	}
+	public static void sumList() {
+		ListNode l1 = new ListNode(2);
+		l1.next = new ListNode(5);
+		
+		ListNode l2 = new ListNode(7);
+		l2.next = new ListNode(5);
+		//reverseOrder  25+75 => as 52+57 = 109
+		ListNode dummy = new ListNode(0);
+		ListNode p=l1, q=l2, curr=dummy;
+		int sum=0, carry=0;
+		while(p!=null || q!=null || carry!=0) {
+			int x = p!=null?p.val:0;
+			int y = q!=null?q.val:0;
+			
+			sum = x+y+carry;
+			curr.next = new ListNode(sum%10);
+			carry = sum/10;
+			
+			curr = curr.next;
+			if(p!=null) p=p.next;
+			if(q!=null) q=q.next;
+		}
+		displayList(dummy.next, "sumList-reverseOrder");
+		//inOrder 25+75 => 100
+		Stack<Integer> s1 = new Stack<>();
+		Stack<Integer> s2 = new Stack<>();
+		p=l1; q=l2;
+		while(p!=null) {
+			s1.push(p.val);
+			p=p.next;
+		}
+		while(q!=null) {
+			s2.push(q.val);
+			q=q.next;
+		}
+		sum=0;
+		curr = new ListNode(0);
+		while(!s1.isEmpty() || !s2.isEmpty()) {
+			if(!s1.isEmpty()) {
+				sum+=s1.pop();
+			}
+			if(!s2.isEmpty()) {
+				sum+=s2.pop();
+			}
+			curr.val = sum%10;
+			ListNode head = new ListNode(sum/10);
+			head.next = curr;
+			curr = head;
+			
+			sum = sum/10;
+		}
+		displayList(curr, "sumList-inOrder");
 	}
 	
 }
