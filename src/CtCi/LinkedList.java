@@ -51,8 +51,11 @@ public class LinkedList {
 		root = init();
 		orderList(root);
 		sumList();
+		
+		root = init();
+		isPalindrome();
 	}
-	//remove duplicate from a listNode
+	//[2.1]remove duplicate from a listNode
 	public static void deleteDup(ListNode root) {
 		HashSet<Integer> set = new HashSet<>();
 		ListNode prev = new ListNode(0);
@@ -80,7 +83,7 @@ public class LinkedList {
 			curr = curr.next;
 		}
 	}
-	
+	//[2.2]find the nth from	 last
 	public static void nthToLast(ListNode root) {
 		int k=3;
 		ListNode slow=root, fast=root;
@@ -95,8 +98,9 @@ public class LinkedList {
 			fast=fast.next;
 			slow=slow.next;
 		}
-		System.out.println("Mid = "+slow.val);
+		System.out.println("Kth from last = "+slow.val);
 	}
+	//[2.4] partition
 	public static void orderList(ListNode head) {
 		int x = 15;
 		ListNode dummySmall = new ListNode(0);
@@ -116,8 +120,8 @@ public class LinkedList {
 		small.next = dummyLarge.next;
 		large.next = null;
 		displayList(dummySmall.next,"Rearranged List");
-
 	}
+	//[2.5] Sum Lists
 	public static void sumList() {
 		ListNode l1 = new ListNode(2);
 		l1.next = new ListNode(5);
@@ -171,5 +175,48 @@ public class LinkedList {
 		}
 		displayList(curr, "sumList-inOrder");
 	}
-	
+	//[2.6] Palindrome
+	public static void isPalindrome() {
+		ListNode head = new ListNode(2);
+		head.next = new ListNode(0);
+		head.next.next = new ListNode(0);
+		head.next.next.next = new ListNode(2);
+
+		ListNode slow=head, fast=head;
+		while(fast!=null && fast.next!=null) {
+			slow=slow.next;
+			fast=fast.next.next;
+		}
+		if(fast!=null)
+			slow=slow.next;
+		slow=reverse(slow, null);
+		fast=head;
+		while(slow!=null) {
+			if(slow.val != fast.val) {
+				System.out.println("isPalindrome: FALSE");
+				return;
+			}
+			slow=slow.next;
+			fast=fast.next;
+		}
+		System.out.println("isPalindrome: TRUE");
+	}
+	//reverse a linkedList
+	public static ListNode reverse(ListNode head) {
+		ListNode newHead = null;
+		while(head!=null) {
+			ListNode next = head.next;
+			head.next = newHead;
+			newHead = head;
+			head = next;
+		}
+		return newHead;
+	}
+	public static ListNode reverse(ListNode head, ListNode newHead) {
+		if(head==null) return newHead;
+		ListNode next = head.next;
+		head.next = newHead;
+		return reverse(next, head);
+	}
+
 }
