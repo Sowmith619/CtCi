@@ -10,29 +10,34 @@ class stack2{
 		}
 	}
 	Node top;
-	void push(int item) {
-		Node temp = new Node(item);
-		temp.next=top;
-		top=temp;
-		System.out.println(item+" pushed");
+	void push(int n) {
+		Node temp = new Node(n);
+		temp.next = top;
+		top = temp;
+		System.out.println(n+" pushed");
 	}
 	int pop() {
 		if(isEmpty())
-			throw new IndexOutOfBoundsException("Stack is Empty");
+			System.out.println("Stack is Empty");
 		Node temp = top;
 		top = temp.next;
 		return temp.val;
 	}
+	int peek() {
+		if(isEmpty())
+			System.out.println("Stack is Empty");
+		return top.val;
+	}
 	boolean isEmpty() {
 		return top==null;
 	}
-	int peek() {
-		if(isEmpty())
-			throw new IndexOutOfBoundsException("Stack is Empty");
-		return top.val;
-	}
 }
-/*class Stack2{
+
+
+
+
+/*Real Code
+ * class Stack2{
 	class Node{
 		int val;
 		Node next;
