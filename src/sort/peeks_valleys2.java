@@ -54,11 +54,10 @@ public class peeks_valleys2 {
 		int left=0, right=nums.length-1;
 		while(left<right) {
 			int mid = (left+right)/2;
-			if(nums[mid]>nums[mid+1]) {
+			if(nums[mid]>nums[mid+1])
 				right=mid;
-			}else {
+			else
 				left=mid+1;
-			}
 		}
 		System.out.println("Peak = "+nums[left]);
 	}
