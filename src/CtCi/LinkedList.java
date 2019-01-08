@@ -83,7 +83,7 @@ public class LinkedList {
 			curr = curr.next;
 		}
 	}
-	//[2.2]find the nth from	 last
+	//[2.2]find the nth from last
 	public static void nthToLast(ListNode root) {
 		int k=3;
 		ListNode slow=root, fast=root;
@@ -100,7 +100,7 @@ public class LinkedList {
 		}
 		System.out.println("Kth from last = "+slow.val);
 	}
-	//[2.4] partition
+	//[2.4] partition based on a val -> [lesser] num [larger]
 	public static void orderList(ListNode head) {
 		int x = 15;
 		ListNode dummySmall = new ListNode(0);
