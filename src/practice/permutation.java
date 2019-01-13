@@ -48,18 +48,7 @@ public class permutation {
 			}
 		}
 	}
-	
-	
-	/*public static void helper(List<String> list, String str, String prefix) {
-		if(str.length()==0)
-			list.add(prefix);
-		else {
-			for(int i=0;i<str.length();i++) {
-				String rem = str.substring(0, i)+str.substring(i+1);
-				helper(list, rem, prefix+str.charAt(i));
-			}
-		}
-	}*/
+
 	public static void helper2(String str, String prefix) {
 		/*if(str.length()==0)
 			System.out.print(prefix+"-");
