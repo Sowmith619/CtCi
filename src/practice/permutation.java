@@ -14,7 +14,8 @@ public class permutation {
 		genParen();
 		paint();
 	}
-	public static void display(List<String> list) {
+	public static void display(List<String> list, String name) {
+		System.out.println(name+":");
 		int count=0;
 		for(String s:list) {
 			System.out.print(s+" ");
@@ -31,13 +32,25 @@ public class permutation {
 		String str = "abc";
 		List<String> list = new LinkedList<>();
 		helper(list, str,"");
-		display(list);
-		
+		display(list,"permutation");
+		System.out.println("permutation2:");	
 		helper2(str,"");
-		System.out.println("\nhelper2 above");	
+		
 	}
 	//String permutation
 	public static void helper(List<String> list, String str, String prefix) {
+		if(str.length()==0) {
+			list.add(prefix);
+		}else {
+			for(int i=0;i<str.length();i++) {
+				String rem = str.substring(0, i)+str.substring(i+1);
+				helper(list, rem, prefix+str.charAt(i));
+			}
+		}
+	}
+	
+	
+	/*public static void helper(List<String> list, String str, String prefix) {
 		if(str.length()==0)
 			list.add(prefix);
 		else {
@@ -46,7 +59,7 @@ public class permutation {
 				helper(list, rem, prefix+str.charAt(i));
 			}
 		}
-	}
+	}*/
 	public static void helper2(String str, String prefix) {
 		/*if(str.length()==0)
 			System.out.print(prefix+"-");
@@ -70,7 +83,7 @@ public class permutation {
 		int[] nums = new int[] {1,2};
 		List<List<Integer>> list = new LinkedList<>();
 		backtrack(list, new LinkedList<>(), nums);
-		System.out.println("Permutation:"+list);
+		System.out.println("\n\nPermutation:"+list+"\n");
 	}
 	public static void backtrack(List<List<Integer>> list, List<Integer> temp, int[] nums) {
 		if(temp.size()==nums.length)
@@ -88,7 +101,7 @@ public class permutation {
 		int n=4;
 		List<String> list = new LinkedList<>();
 		backtrack(list, "", 0, 0, n);
-		display(list);
+		display(list, "genParan");
 	}
 	public static void backtrack(List<String> list, String str, int open, int close, int max) {
 		if(str.length()==2*max)

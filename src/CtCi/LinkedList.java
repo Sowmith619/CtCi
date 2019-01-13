@@ -72,6 +72,7 @@ public class LinkedList {
 	public static void deleteDup2(ListNode root) {
 		ListNode curr = root;
 		while(curr != null) {
+			//Remove all future nodes that have the same value
 			ListNode runner = curr;
 			while(runner.next != null) {
 				if(runner.next.val == curr.val) {
