@@ -50,14 +50,6 @@ public class permutation {
 	}
 
 	public static void helper2(String str, String prefix) {
-		/*if(str.length()==0)
-			System.out.print(prefix+"-");
-		else {
-			for(int i=0;i<str.length();i++) {
-				String rem = str.substring(0, i)+str.substring(i+1);
-				helper2(rem, prefix+str.charAt(i));
-			}
-		}*/
 		if(str.length()==0) {
 			System.out.print(prefix+"-");
 		}else {
