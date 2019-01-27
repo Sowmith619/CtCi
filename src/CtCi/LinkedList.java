@@ -42,7 +42,7 @@ public class LinkedList {
 		displayList(root,"With HashSet");
 		
 		root = init();
-		deleteDup(root);
+		deleteDup2(root);
 		displayList(root, "without buffer");
 		
 		root = init();
@@ -71,8 +71,7 @@ public class LinkedList {
 	}
 	public static void deleteDup2(ListNode root) {
 		ListNode curr = root;
-		while(curr != null) {
-			//Remove all future nodes that have the same value
+		while(curr!=null) {
 			ListNode runner = curr;
 			while(runner.next != null) {
 				if(runner.next.val == curr.val) {
