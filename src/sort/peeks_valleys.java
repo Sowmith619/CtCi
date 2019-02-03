@@ -28,7 +28,7 @@ public class peeks_valleys {
     }
     //find peak
     public int findPeak1() {
-    	int[] nums = {1,2,1,3,5,6,7};
+    	int[] nums = {1,2,1,1};
     	int l=0, r=nums.length-1;
     	while(l<r) {
     		int mid = (l+r)/2;
@@ -40,6 +40,7 @@ public class peeks_valleys {
     	}
     	return nums[l];
     }
+    
     public int findPeak2(int[] nums, int l, int r) {
     	if(l==r)
     		return nums[l];
